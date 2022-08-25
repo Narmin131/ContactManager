@@ -33,10 +33,7 @@ const EditContactForm = () => {
   }, [id, contacts]);
 
   function onSubmit() {
-    if(Object.keys(selectedContact).some(key => !selectedContact[key])) {
-      toast.error('Please fill in all fields')
-    }
-    else if (
+     if (
       JSON.stringify(selectedContact) ===
       JSON.stringify(contacts.find((user) => user.id === selectedContact.id))
     ) {
@@ -88,12 +85,12 @@ const EditContactForm = () => {
         style={{fontWeight:'bold',}}
         label="Name"
         labelAlign="left"
-        rules={[{ required: true, message: "Please enter your  name!" }]}
       >
         <Input
           name="name"
           value={selectedContact.name }
           onChange={handleOnChange}
+          required
         />
       </Form.Item>
 
@@ -101,12 +98,12 @@ const EditContactForm = () => {
         label="Surname"
         style={{fontWeight:'bold',}}
         labelAlign="left"
-        rules={[{ required: true, message: "Please enter your surname!" }]}
       >
         <Input
           placeholder="Enter your surname"
           value={selectedContact.surname}
           name="surname"
+          required
           onChange={(e) =>
             setSelectedContact({ ...selectedContact, [e.target.name]: e.target.value })
           }
@@ -117,11 +114,11 @@ const EditContactForm = () => {
         label="Father Name"
         style={{fontWeight:'bold',}}
         labelAlign="left"
-        rules={[{ required: true, message: "Please enter your father name!" }]}
       >
         <Input
           placeholder="Enter your father name"
           value={selectedContact.fatherName}
+          required
           name="fatherName"
           onChange={(e) =>
             setSelectedContact({ ...selectedContact, [e.target.name]: e.target.value })
@@ -133,11 +130,11 @@ const EditContactForm = () => {
         style={{fontWeight:'bold',}}
         label="Email"
         labelAlign="left"
-        rules={[{ required: true, message: "Please enter your email!" }]}
       >
         <Input
           name="email"
           placeholder="Enter your e-mail"
+          required
           value={selectedContact.email}
           onChange={(e) =>
             setSelectedContact({ ...selectedContact, [e.target.name]: e.target.value })
@@ -149,12 +146,12 @@ const EditContactForm = () => {
         label="Specialty"
         labelAlign="left"
         style={{fontWeight:'bold',}}
-        rules={[{ required: true, message: "Please enter your specialty!" }]}
       >
         <Input
           name="specialty"
           placeholder="Enter your specialty"
           value={selectedContact.specialty}
+          required
           onChange={(e) =>
             setSelectedContact({ ...selectedContact, [e.target.name]: e.target.value })
           }
@@ -165,12 +162,12 @@ const EditContactForm = () => {
         label="Education"
         style={{fontWeight:'bold',}}
         labelAlign="left"
-        rules={[{ required: true, message: "Please enter education level!" }]}
       >
         <Select
           onChange={(e) => setSelectedContact({ ...selectedContact, education: e })}
           value={selectedContact.education}
           name="education"
+          required
           style={{
             width: 120,
           }}
