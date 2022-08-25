@@ -39,10 +39,10 @@ const Form1 = () => {
   };
 
   const selectOptions = [
-    { label: "Bachelor", value: 1 },
-    { label: "Master", value: 2 },
-    { label: "Phd", value: 3 },
-    { label: "Doctorate", value: 4 },
+    { value: "Bachelor" },
+    { value:"Master"  },
+    {  value:"Phd" },
+    {  value: "Doctorate" },
   ];
 
   return (
@@ -56,19 +56,19 @@ const Form1 = () => {
           remember: true,
         }}
         labelCol={{
-          span:4,
+          span:5,
           offset:1
         }}
         wrapperCol={{
-          span: 12,
+          span: 14,
           offset:3
         }}
       >
           <Form.Item
-            style={{"justifyContent":'space-between'}}
             label="Name"
             name='Name'
             labelAlign="left"
+            style={{fontWeight:'bold',}}
             rules={[{ required: true, message: "Please enter your  name!"}]}
           >
             <Input
@@ -85,6 +85,7 @@ const Form1 = () => {
           label="Surname"
           name='Surname'
           labelAlign="left"
+          style={{fontWeight:'bold',}}
           rules={[{ required: true, message: "Please enter your surname!" }]}
         >
           <Input
@@ -100,6 +101,7 @@ const Form1 = () => {
         <Form.Item
           label="Father Name"
           labelAlign="left"
+          style={{fontWeight:'bold',}}
           name='Father Name'
           rules={[{ required: true, message: "Please enter your father name!" }]}
         >
@@ -117,6 +119,7 @@ const Form1 = () => {
           label="Email"
           name='Email'
           labelAlign="left"
+          style={{fontWeight:'bold',}}
           rules={[{ required: true, message: "Please enter your email!" }]}
         >
           <Input
@@ -133,6 +136,7 @@ const Form1 = () => {
           label="Specialty"
           name='Specialty'
           labelAlign="left"
+          style={{fontWeight:'bold',}}
           rules={[{ required: true, message: "Please enter your specialty!"  }]}
         >
           <Input
@@ -148,19 +152,20 @@ const Form1 = () => {
         <Form.Item 
         label='Education' 
         name='Education Level' 
-        labelAlign="left">
+        labelAlign="left"
+        style={{fontWeight:'bold',}}
+        rules={[{ required: true, message: "Please select your education level!" }]}>
           <Select
             onChange={(e)=>setContact({ ...contact, education : e })}
-            defaultValue={selectOptions[0].label}
+            defaultValue='bachelor'
             name="education"
             style={{
               width: 120,
+              textTransform:'capitalize'
             }}
           >
-            {selectOptions.map((item) => (
-              <Option key={item.value} value={item.label}>
-                {item.label}
-              </Option>
+            {selectOptions.map((item,index) => (
+              <Option key={index} value={item.value} ></Option>
             ))}
           </Select>
         </Form.Item>
@@ -169,6 +174,7 @@ const Form1 = () => {
         label="Gender"
         labelAlign="left"
          name='Gender' 
+         style={{fontWeight:'bold',}}
          rules={[{ required: true, message: "Please select your gender!" }]}>
           <Radio.Group
             onChange={(e) =>
@@ -197,6 +203,7 @@ const Form1 = () => {
 
         <Form.Item  
         labelAlign="left"
+        style={{fontWeight:'bold',}}
         wrapperCol={{
           offset: 1,
           span: 16,

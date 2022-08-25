@@ -33,14 +33,17 @@ const EditContactForm = () => {
   }, [id, contacts]);
 
   function onSubmit() {
-    if (
+    if(Object.keys(selectedContact).some(key => !selectedContact[key])) {
+      toast.error('Please fill in all fields')
+    }
+    else if (
       JSON.stringify(selectedContact) ===
       JSON.stringify(contacts.find((user) => user.id === selectedContact.id))
     ) {
       toast.warning("There is no update in the data");
     } else if (selectedContact) {
       UPDATE_CONTACT(selectedContact);
-      history("/contacts");
+      history("/");
       toast.success("Contact has been successfully updated");
     }
   }
@@ -73,16 +76,16 @@ const EditContactForm = () => {
         remember: true,
       }}
       labelCol={{
-        span: 4,
+        span: 5,
         offset: 1,
       }}
       wrapperCol={{
-        span: 12,
+        span: 14,
         offset: 3,
       }}
     >
       <Form.Item
-        style={{ justifyContent: "space-between" }}
+        style={{fontWeight:'bold',}}
         label="Name"
         labelAlign="left"
         rules={[{ required: true, message: "Please enter your  name!" }]}
@@ -96,6 +99,7 @@ const EditContactForm = () => {
 
       <Form.Item
         label="Surname"
+        style={{fontWeight:'bold',}}
         labelAlign="left"
         rules={[{ required: true, message: "Please enter your surname!" }]}
       >
@@ -111,6 +115,7 @@ const EditContactForm = () => {
 
       <Form.Item
         label="Father Name"
+        style={{fontWeight:'bold',}}
         labelAlign="left"
         rules={[{ required: true, message: "Please enter your father name!" }]}
       >
@@ -125,6 +130,7 @@ const EditContactForm = () => {
       </Form.Item>
 
       <Form.Item
+        style={{fontWeight:'bold',}}
         label="Email"
         labelAlign="left"
         rules={[{ required: true, message: "Please enter your email!" }]}
@@ -142,6 +148,7 @@ const EditContactForm = () => {
       <Form.Item
         label="Specialty"
         labelAlign="left"
+        style={{fontWeight:'bold',}}
         rules={[{ required: true, message: "Please enter your specialty!" }]}
       >
         <Input
@@ -156,6 +163,7 @@ const EditContactForm = () => {
 
       <Form.Item
         label="Education"
+        style={{fontWeight:'bold',}}
         labelAlign="left"
         rules={[{ required: true, message: "Please enter education level!" }]}
       >
@@ -177,6 +185,7 @@ const EditContactForm = () => {
 
       <Form.Item
         label="Gender"
+        style={{fontWeight:'bold',}}
         labelAlign="left"
         rules={[{ required: true, message: "Please select your gender!" }]}
       >
@@ -206,6 +215,7 @@ const EditContactForm = () => {
 
       <Form.Item
         labelAlign="left"
+        style={{fontWeight:'bold',}}
         wrapperCol={{
           offset: 1,
           span: 16,
