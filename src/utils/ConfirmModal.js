@@ -1,23 +1,23 @@
 import React from "react";
-import { Modal, Space } from "antd";
+import { Modal } from "antd";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import DeleteIcon from "../assets/icons/DeleteIcon";
 import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
+import { toast } from "react-toastify";
 
-const ConfirmModal = () => {
 
-  const {  REMOVE_CONTACT, contact} = useContext(GlobalContext);
+const ConfirmModal = ({id}) => {
+  
+  const {  REMOVE_CONTACT } = useContext(GlobalContext);
 
   const confirm = () => {
     Modal.confirm({
-    title: 'Do you want to delete these items?',
+    title: 'Do you want to delete this contact?',
     icon: <ExclamationCircleOutlined />,
-    content: 'When clicked the OK button, this dialog will be closed after 1 second',
     onOk() {
-      return new Promise((resolve, reject) => {
-        setTimeout(Math.random() > 0.5 ? resolve : reject, 1000);
-      }).catch(() => console.log('Oops errors!'));
+      REMOVE_CONTACT(id)
+      toast.info('Item succesfully deleted')
     },
     onCancel() {},
   });
@@ -26,7 +26,7 @@ const ConfirmModal = () => {
   return (
     <>
       <div onClick={confirm}>
-        <DeleteIcon onClick={() => REMOVE_CONTACT(contact.id)} />
+       <DeleteIcon/>
       </div>
     </>
   );

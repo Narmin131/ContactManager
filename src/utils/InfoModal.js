@@ -1,35 +1,32 @@
-import React, {useState} from "react";
-import { Button, Modal } from "antd";
+import React from "react";
+import {  Modal } from "antd";
 import InfoIcon from "../assets/icons/InfoIcon";
-const InfoModal = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+import 'antd/dist/antd.min.css'
+import styles from "../utils/Modal.module.scss"
 
-  const showModal = () => {
-    setIsModalVisible(true);
-    console.log('salaaam');
-  };
 
-  const handleOk = () => {
-    setIsModalVisible(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
+const InfoModal = (  {contact} ) => {
+  const info = () => {
+    Modal.info({
+      title: "Contact details info",
+      content: (
+        <div>
+          <p className={styles.p}>Name: <span>{contact.name}</span></p>
+          <p className={styles.p}>Surname: <span>{contact.surname}</span></p>
+          <p className={styles.p}>Father Name: <span>{contact.fatherName}</span></p>
+          <p className={styles.p}>Gender: <span>{contact.gender}</span></p>
+          <p className={styles.p}>Specialty: <span>{contact.specialty}</span></p>
+          <p className={styles.p}>Email: <span>{contact.email}</span></p>
+          <p className={styles.p}>Education: <span>{contact.education}</span></p>
+        </div>
+      ),
+      onOk() {},
+    });
   };
 
   return (
-    <div>
-      <div onClick={showModal}>
+    <div onClick={() => info(contact.id)}>
       <InfoIcon></InfoIcon>
-      </div>
-      <Modal
-        title="Basic Modal"
-        visible={isModalVisible}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <p>Some contents...</p>
-      </Modal>
     </div>
   );
 };

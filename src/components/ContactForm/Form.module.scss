@@ -1,0 +1,18 @@
+.form {
+    width: 760px;
+    height: auto;
+    margin: 0 auto;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background-color: #fff;
+    padding:30px  20px;
+    border-radius: 7px;
+    .inputLabel {
+        font-weight: 700;
+        font-size: 23px;
+        font-family: 'Exo 2', sans-serif;
+    }
+    .buttons{
+        width: 100%;
+        padding: 0 30px;
+    }
+}

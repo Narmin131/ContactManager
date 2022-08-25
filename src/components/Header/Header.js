@@ -1,17 +1,14 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import styles from "../Header/Header.module.scss"
 const Header = () => {
   return (
-    <div>
-      <nav className="navbar navbar-expand-lg bg-dark">
-        <div className="container-fluid">
-          <NavLink className="navbar-brand text-light m-0" to='/contacts'>Contacts</NavLink>
-          <NavLink to='/contact/new' class="btn btn-light">
-            Add
-          </NavLink>
+      <nav className={styles.navbar}>
+        <div className="container d-flex justify-content-between align-items-center h-100">
+          <NavLink to='/' className={styles.contacts}>Contacts</NavLink>
+          <NavLink to='/contact/new' className={styles.add}> New contact</NavLink>
         </div>
       </nav>
-    </div>
   );
 };
 
