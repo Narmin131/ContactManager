@@ -1,14 +1,33 @@
-import React,{ createContext, useReducer,useEffect  } from "react";
+import React, { createContext, useReducer, useEffect } from "react";
 import AppReducer from "./AppReducer";
 
 const initialState = {
-  contacts: [],
+  contacts: localStorage.getItem("Contacts")
+    ? JSON.parse(localStorage.getItem("Contacts"))
+    : [],
 };
 
 export const GlobalContext = createContext(initialState);
 
-export const ContextProvider = ({children}) => {
-  const [state, dispatch] = useReducer(AppReducer, initialState)
+export const ContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(AppReducer, initialState);
+
+  // // useEffect(() => {
+  // //   localStorage.setItem("contacts", JSON.stringify(state));
+  // // }, [state]);
+
+  // console.log(state);
+
+  // useEffect(() => {
+  // 	const lsData = localStorage.getItem('Contacts');
+  // 	if (lsData) {
+  // 		dispatch(() => JSON.parse(lsData));
+  // 	}
+  // }, []);
+
+  useEffect(() => {
+    localStorage.setItem("Contacts", JSON.stringify(state.contacts));
+  }, [state]);
 
   const ADD_CONTACT = (contacts) => {
     dispatch({
