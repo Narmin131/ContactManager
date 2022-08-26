@@ -8,16 +8,7 @@ const initialState = {
 export const GlobalContext = createContext(initialState);
 
 export const ContextProvider = ({children}) => {
-  const [state, dispatch] = useReducer(AppReducer, initialState, () => {
-    const localData  = localStorage.getItem("contacts");
-    return localData ? JSON.parse(localData) : []
-  })
-    
-    
-
-  useEffect(() => {
-    localStorage.setItem("contacts", JSON.stringify(state));
-  }, [state])
+  const [state, dispatch] = useReducer(AppReducer, initialState)
 
   const ADD_CONTACT = (contacts) => {
     dispatch({
