@@ -46,6 +46,7 @@ export const ContextProvider = ({children}) => {
         contacts: state.contacts,
         ADD_CONTACT,
         REMOVE_CONTACT,
+        dispatch,
         UPDATE_CONTACT,
       }}
     >

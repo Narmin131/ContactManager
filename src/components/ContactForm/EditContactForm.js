@@ -166,6 +166,7 @@ const EditContactForm = () => {
         <Select
           onChange={(e) => setSelectedContact({ ...selectedContact, education: e })}
           value={selectedContact.education}
+          defaultValue={selectOptions[0].value}
           name="education"
           required
           style={{

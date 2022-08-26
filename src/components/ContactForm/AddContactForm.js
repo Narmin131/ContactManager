@@ -10,6 +10,12 @@ import { Checkbox, Button, Form, Input, Select, Radio } from "antd";
 
 const Form1 = () => {
   const { ADD_CONTACT } = useContext(GlobalContext);
+  const selectOptions = [
+    { value: "Bachelor" },
+    { value:"Master"  },
+    {  value:"Phd" },
+    {  value: "Doctorate" },
+  ];
   const [contact, setContact] = useState({
     id: uuidv4(),
     name: "",
@@ -19,7 +25,7 @@ const Form1 = () => {
     email: "",
     gender: "",
     updatesNotification: "",
-    education: "",
+    education: selectOptions[0].value,
   });
 
   const { Option } = Select;
@@ -38,12 +44,7 @@ const Form1 = () => {
     }
   };
 
-  const selectOptions = [
-    { value: "Bachelor" },
-    { value:"Master"  },
-    {  value:"Phd" },
-    {  value: "Doctorate" },
-  ];
+ 
 
   return (
     <>
@@ -154,7 +155,7 @@ const Form1 = () => {
         name='Education Level' 
         labelAlign="left"
         style={{fontWeight:'bold',}}
-        rules={[{ required: true, message: "Please select your education level!" }]}>
+        >
           <Select
             onChange={(e)=>setContact({ ...contact, education : e })}
             defaultValue='bachelor'
