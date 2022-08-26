@@ -125,6 +125,7 @@ const Form1 = () => {
         >
           <Input
             name="email"
+            type='email'
             placeholder="Enter your e-mail"
             value={email}
             onChange={(e) =>

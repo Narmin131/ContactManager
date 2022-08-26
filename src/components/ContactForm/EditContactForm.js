@@ -134,6 +134,7 @@ const EditContactForm = () => {
         <Input
           name="email"
           placeholder="Enter your e-mail"
+          type='email'
           required
           value={selectedContact.email}
           onChange={(e) =>
