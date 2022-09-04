@@ -4,7 +4,7 @@ import { GlobalContext } from "../../context/GlobalState";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-import styles from "../ContactForm/Form.module.scss";
+import   "../ContactForm/Form.scss";
 import { toast } from "react-toastify";
 import { Checkbox, Button, Form, Input, Select, Radio } from "antd";
 
@@ -12,9 +12,9 @@ const Form1 = () => {
   const { ADD_CONTACT } = useContext(GlobalContext);
   const selectOptions = [
     { value: "Bachelor" },
-    { value:"Master"  },
-    {  value:"Phd" },
-    {  value: "Doctorate" },
+    { value: "Master" },
+    { value: "Phd" },
+    { value: "Doctorate" },
   ];
   const [contact, setContact] = useState({
     id: uuidv4(),
@@ -36,7 +36,7 @@ const Form1 = () => {
   let history = useNavigate();
 
   const onSubmit = () => {
-     if (contact) {
+    if (contact) {
       ADD_CONTACT(contact);
       history("/");
       console.log(contact);
@@ -44,49 +44,47 @@ const Form1 = () => {
     }
   };
 
- 
-
   return (
     <>
       <Form
         onFinish={onSubmit}
-        className={styles.form}
         name="myForm"
         form={form}
+        className='form'
         initialValues={{
           remember: true,
         }}
         labelCol={{
-          span:5,
-          offset:1
+          span: 5,
+          offset: 1,
         }}
         wrapperCol={{
           span: 14,
-          offset:3
+          offset: 3,
         }}
       >
-          <Form.Item
-            label="Name"
-            name='Name'
-            labelAlign="left"
-            style={{fontWeight:'bold',}}
-            rules={[{ required: true, message: "Please enter your  name!"}]}
-          >
-            <Input
-              placeholder="Enter your name"
-              value={name}
-              name="name"
-              onChange={(e) =>
-                setContact({ ...contact, [e.target.name]: e.target.value })
-              }
-            />
-          </Form.Item>
+        <Form.Item
+          label="Name"
+          name="Name"
+          labelAlign="left"
+          style={{ fontWeight: "bold" }}
+          rules={[{ required: true, message: "Please enter your  name!" }]}
+        >
+          <Input
+            placeholder="Enter your name"
+            value={name}
+            name="name"
+            onChange={(e) =>
+              setContact({ ...contact, [e.target.name]: e.target.value })
+            }
+          />
+        </Form.Item>
 
         <Form.Item
           label="Surname"
-          name='Surname'
+          name="Surname"
           labelAlign="left"
-          style={{fontWeight:'bold',}}
+          style={{ fontWeight: "bold" }}
           rules={[{ required: true, message: "Please enter your surname!" }]}
         >
           <Input
@@ -102,9 +100,11 @@ const Form1 = () => {
         <Form.Item
           label="Father Name"
           labelAlign="left"
-          style={{fontWeight:'bold',}}
-          name='Father Name'
-          rules={[{ required: true, message: "Please enter your father name!" }]}
+          style={{ fontWeight: "bold" }}
+          name="Father Name"
+          rules={[
+            { required: true, message: "Please enter your father name!" },
+          ]}
         >
           <Input
             placeholder="Enter your father name"
@@ -118,14 +118,14 @@ const Form1 = () => {
 
         <Form.Item
           label="Email"
-          name='Email'
+          name="Email"
           labelAlign="left"
-          style={{fontWeight:'bold',}}
+          style={{ fontWeight: "bold" }}
           rules={[{ required: true, message: "Please enter your email!" }]}
         >
           <Input
             name="email"
-            type='email'
+            type="email"
             placeholder="Enter your e-mail"
             value={email}
             onChange={(e) =>
@@ -136,10 +136,10 @@ const Form1 = () => {
 
         <Form.Item
           label="Specialty"
-          name='Specialty'
+          name="Specialty"
           labelAlign="left"
-          style={{fontWeight:'bold',}}
-          rules={[{ required: true, message: "Please enter your specialty!"  }]}
+          style={{ fontWeight: "bold" }}
+          rules={[{ required: true, message: "Please enter your specialty!" }]}
         >
           <Input
             name="specialty"
@@ -151,33 +151,34 @@ const Form1 = () => {
           />
         </Form.Item>
 
-        <Form.Item 
-        label='Education' 
-        name='Education Level' 
-        labelAlign="left"
-        style={{fontWeight:'bold',}}
+        <Form.Item
+          label="Education"
+          name="Education Level"
+          labelAlign="left"
+          style={{ fontWeight: "bold" }}
         >
           <Select
-            onChange={(e)=>setContact({ ...contact, education : e })}
-            defaultValue='bachelor'
+            onChange={(e) => setContact({ ...contact, education: e })}
+            defaultValue="bachelor"
             name="education"
             style={{
               width: 120,
-              textTransform:'capitalize'
+              textTransform: "capitalize",
             }}
           >
-            {selectOptions.map((item,index) => (
-              <Option key={index} value={item.value} ></Option>
+            {selectOptions.map((item, index) => (
+              <Option key={index} value={item.value}></Option>
             ))}
           </Select>
         </Form.Item>
 
-        <Form.Item 
-        label="Gender"
-        labelAlign="left"
-         name='Gender' 
-         style={{fontWeight:'bold',}}
-         rules={[{ required: true, message: "Please select your gender!" }]}>
+        <Form.Item
+          label="Gender"
+          labelAlign="left"
+          name="Gender"
+          style={{ fontWeight: "bold" }}
+          rules={[{ required: true, message: "Please select your gender!" }]}
+        >
           <Radio.Group
             onChange={(e) =>
               setContact({
@@ -194,22 +195,20 @@ const Form1 = () => {
             >
               Female
             </Radio>
-            <Radio 
-            id="Male" 
-            value="Male" 
-            checked={contact.gender === "Male"}>
+            <Radio id="Male" value="Male" checked={contact.gender === "Male"}>
               Male
             </Radio>
           </Radio.Group>
         </Form.Item>
 
-        <Form.Item  
-        labelAlign="left"
-        style={{fontWeight:'bold',}}
-        wrapperCol={{
-          offset: 1,
-          span: 16,
-        }}>
+        <Form.Item
+          labelAlign="left"
+          style={{ fontWeight: "bold" }}
+          wrapperCol={{
+            offset: 1,
+            span: 16,
+          }}
+        >
           <Checkbox
             name="updatesNotification"
             checked={contact.updatesNotification === "update"}
@@ -225,12 +224,14 @@ const Form1 = () => {
           </Checkbox>
         </Form.Item>
 
-        <div className={styles.buttons}>
-          <Button type="primary" htmlType="submit" >
+        <div className='buttons'>
+          <Button type="primary" htmlType="submit">
             Add contact
           </Button>
           <NavLink to="/" className="mx-3">
-            <Button danger type="primary" >Cancel</Button>
+            <Button danger type="primary">
+              Cancel
+            </Button>
           </NavLink>
         </div>
       </Form>

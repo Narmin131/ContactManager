@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { GlobalContext } from "../../context/GlobalState";
-import styles from "../ContactForm/Form.module.scss";
+import  "../ContactForm/Form.scss";
 import { toast } from "react-toastify";
 import { Checkbox, Button, Form, Input, Select, Radio } from "antd";
 const EditContactForm = () => {
@@ -66,7 +66,7 @@ const EditContactForm = () => {
   return (
     <Form
       onFinish={onSubmit}
-      className={styles.form}
+      className='form'
       name="myForm"
       form={form}
       initialValues={{
@@ -235,7 +235,7 @@ const EditContactForm = () => {
         </Checkbox>
       </Form.Item>
 
-      <div className={styles.buttons}>
+      <div className='buttons'>
         <Button type="primary" htmlType="submit">
           Update contact
         </Button>

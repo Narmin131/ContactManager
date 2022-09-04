@@ -2,7 +2,7 @@ import React from "react";
 import {  Modal } from "antd";
 import InfoIcon from "../assets/icons/InfoIcon";
 import 'antd/dist/antd.min.css'
-import styles from "../utils/Modal.module.scss"
+import styles from "../utils/Modal.scss"
 
 
 const InfoModal = (  {contact} ) => {
